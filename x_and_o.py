@@ -89,13 +89,13 @@ while True:
         except ValueError:
             print("\nYou can only enter a location on the board, not anything else!\n")                 #error handling
     if check_row("O"):
-        print("\nPlayer O won!r\n")
+        print("\nPlayer O won!\n")
         break                                   #win check
     elif check_col("O"):
-        print("\nPlayer O won!c\n")
+        print("\nPlayer O won!\n")
         break
     elif check_across("O"):
-        print("\nPlayer O won!a\n")
+        print("\nPlayer O won!\n")
         break
     elif check_draw():
         print("\nIt's a draw!\n")
