@@ -5,7 +5,7 @@ def print_game_board():
     for row in game:
         print("| " + " | ".join(row) + " |")
         print("|" + "-" * 11 + "|")
-    print("\n")                                     #prints game board nicely (like a normal X and O board but in ascii)
+    print("\n")                                     #prints game board nicely (like a normal X and O board but with ascii borders)
 
 def check_draw():
     draw = False
@@ -32,20 +32,19 @@ def check_row(sign):
             return False
 
 def check_col(sign):
-    if game[0][0] == sign and game[1][0] == sign and game[2][0] == sign:
-        return True
-    elif game[0][1] == sign and game[1][1] == sign and game[2][1] == sign:
-        return True
-    elif game[0][2] == sign and game[1][2] == sign and game[2][2] == sign:
-        return True
-    else:
-        return False                                #check if the player has won
+    for i in range(len(game) - 1):
+        column = [row[i] for row in game]
+        if column[0] == sign and column[1] == sign and column[2] == sign:
+            return True
+        else:
+            column.clear()
+    return False
  
 def no_space(row, column):
     if game[row][column] == "O" or game[row][column] == "X":
         return True
     else:
-        return False                    #checks if there is already a "X" or a "O" on the spot entered by the player
+        return False                    #checks if there is already a "X" or a "O" on the spot entered by the player, but if there's "-" it will return false
 
 def player(sign):
     while True:
@@ -58,45 +57,48 @@ def player(sign):
     game[int(player[0])][int(player[1])] = sign
     print_game_board()                              #this function lets the player enter where they want to place the X or the O, and assigns it to that spot on the game board
 
+print_game_board()
+
 while True:
-    print_game_board()
     while True:
+        player_turn = "X"
         try:
-            player("X")
+            player(player_turn)
             break
         except IndexError:
             print("\nYou did not respect the format or you entered an out of bounds spot!\n")
         except ValueError:
             print("\nYou can only enter a location on the board, not anything else!\n")                 #error handling
-    if check_row("X"):
+    if check_row(player_turn):
+        print("\nPlayer X won!\n")
+        break
+    elif check_col(player_turn):
+        print("\nPlayer X won!\n")
+        break
+    elif check_across(player_turn):
         print("\nPlayer X won!\n")
         break                                   #win check
-    elif check_col("X"):
-        print("\nPlayer X won!\n")
-        break
-    elif check_across("X"):
-        print("\nPlayer X won!\n")
-        break
     elif check_draw():
         print("\nIt's a draw!\n")
         break
     while True:
+        player_turn = "O"
         try:
-            player("O")
+            player(player_turn)
             break
         except IndexError:
             print("\nYou did not respect the format or you entered an out of bounds spot!\n")
         except ValueError:
             print("\nYou can only enter a location on the board, not anything else!\n")                 #error handling
-    if check_row("O"):
-        print("\nPlayer O won!\n")
+    if check_row(player_turn):
+        print("\nPlayer O won!r\n")
+        break
+    elif check_col(player_turn):
+        print("\nPlayer O won!c\n")
+        break
+    elif check_across(player_turn):
+        print("\nPlayer O won!a\n")
         break                                   #win check
-    elif check_col("O"):
-        print("\nPlayer O won!\n")
-        break
-    elif check_across("O"):
-        print("\nPlayer O won!\n")
-        break
     elif check_draw():
         print("\nIt's a draw!\n")
         break
