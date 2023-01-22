@@ -8,13 +8,10 @@ def print_game_board():
     print("\n")                                     #prints game board nicely (like a normal X and O board but with ascii borders)
 
 def check_draw():
-    draw = False
     for row in game:
         if "-" in row:
             return False
-        else:
-            draw = True
-    return draw
+    return True
 
 def check_across(sign):
     if game[0][0] == sign and game[1][1] == sign and game[2][2] == sign:
