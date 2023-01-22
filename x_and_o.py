@@ -39,7 +39,7 @@ def check_col(sign):
     elif game[0][2] == sign and game[1][2] == sign and game[2][2] == sign:
         return True
     else:
-        return False
+        return False                                #check if the player has won
  
 def no_space(row, column):
     if game[row][column] == "O" or game[row][column] == "X":
