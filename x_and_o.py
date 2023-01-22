@@ -37,7 +37,7 @@ def check_col(sign):
             column.clear()
     return False
  
-def no_space(row, column):
+def check_space(row, column):
     if game[row][column] == "O" or game[row][column] == "X":
         return True
     else:
@@ -47,7 +47,7 @@ def player(sign):
     while True:
         player = input(f"Where do you want to place (you are {sign}), format: \"0,0\": ")
         player = player.split(",")
-        if no_space(int(player[0]), int(player[1])):
+        if check_space(int(player[0]), int(player[1])):
             print("There is already another X or O placed on there, choose another location on the board!\n")
         else:
             break
