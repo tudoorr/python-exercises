@@ -31,7 +31,7 @@ def check_row(sign):
 def check_col(sign):
     for i in range(len(game) - 1):
         column = [row[i] for row in game]
-        if column[0] == sign and column[1] == sign and column[2] == sign:
+        if len(set(column)) == 1:
             return True
         else:
             column.clear()
