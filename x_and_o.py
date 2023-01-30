@@ -22,8 +22,8 @@ def check_across(sign):
         return False
 
 def check_row(sign):
-    for i in range(len(game) - 1):
-        if game[i][0] == sign and game[i][1] == sign and game[i][2] == sign:
+    for row in game:
+        if len(set(row))
             return True
         else:
             return False
