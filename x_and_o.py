@@ -23,7 +23,7 @@ def check_across(sign):
 
 def check_row(sign):
     for row in game:
-        if len(set(row))
+        if len(set(row)) == 1:
             return True
         else:
             return False
