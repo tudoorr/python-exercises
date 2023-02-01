@@ -2,14 +2,12 @@ from datetime import datetime
 
 input("Press enter to start and the timer will begin")
 
-start_time = datetime.now().strftime("%M:%S")
-start_minute, start_second = start_time.split(":")
+start_second = datetime.now().strftime("%S")
 print(start_time)
 
 input("\nTimer started, press enter when you think 10 seconds had passed\n")
 
-end_time = datetime.now().strftime("%M:%S")
-end_minute, end_second = end_time.split(":")
+end_second = datetime.now().strftime("%S")
 print(end_time)
 
 if end_second < start_second:
