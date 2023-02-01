@@ -2,11 +2,11 @@ from datetime import datetime
 import string
 
 input("Press enter when you want to start entering the alphabet, the timer will also begin")
-start_minute, start_second = datetime.now().strftime("%M:%S").strip(":")
+start_second = datetime.now().strftime("%S")
 alphabet = input(">")
 
 if alphabet.lower() == string.ascii_lowercase:
-    end_minute, end_second = datetime.now().strftime("%M:%S").strip(":")
+    end_second = datetime.now().strftime("%S")
     if end_second < start_second:
         seconds_passed = int(end_second) + 60 - int(start_second)
     else:
