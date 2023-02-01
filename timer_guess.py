@@ -1,6 +1,6 @@
 from datetime import datetime
 
-input("Press enter to start and the timer will begin after 3 seconds")
+input("Press enter to start and the timer will begin")
 
 start_time = datetime.now().strftime("%M:%S")
 start_minute, start_second = start_time.split(":")
