@@ -3,12 +3,10 @@ from datetime import datetime
 input("Press enter to start and the timer will begin")
 
 start_second = datetime.now().strftime("%S")
-print(start_time)
 
 input("\nTimer started, press enter when you think 10 seconds had passed\n")
 
 end_second = datetime.now().strftime("%S")
-print(end_time)
 
 if end_second < start_second:
     seconds_passed = int(end_second) + 60 - int(start_second)
