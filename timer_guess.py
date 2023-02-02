@@ -1,4 +1,5 @@
 from datetime import datetime
+from math import floor
 
 input("Press enter to start and the timer will begin")
 
@@ -16,7 +17,7 @@ else:
 if seconds_passed < 60:
     print(f"{seconds_passed} seconds have passed")
 else:
-    minutes_passed = seconds_passed / 60
+    minutes_passed = floor(seconds_passed / 60)
     seconds_passed = seconds_passed - minutes_passed * 60
     print(f"\n{minutes_passed} minutes and {seconds_passed} seconds have passed\n")
 
