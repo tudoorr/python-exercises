@@ -9,14 +9,14 @@ input("\nTimer started, press enter when you think 10 seconds had passed\n")
 end_second = datetime.now().strftime("%S")
 
 if end_second < start_second:
-    seconds_passed = int(end_second) + 60 - int(start_second)
+    seconds_passed = int(end_second) + minutes_passed * 60 - int(start_second)
 else:
     seconds_passed = int(end_second) - int(start_second)
 
 if seconds_passed < 60:
     print(f"{seconds_passed} seconds have passed")
 else:
-    minutes_passed = seconds_passed % 60
+    minutes_passed = seconds_passed / 60
     seconds_passed = seconds_passed - minutes_passed * 60
     print(f"\n{minutes_passed} minutes and {seconds_passed} seconds have passed\n")
 
