@@ -59,6 +59,7 @@ while True:
             print("\nYou can only enter a location on the board, not anything else!\n")                 #error handling
     if check_win("X"):
         print("Player X won!\n")
+        break
     elif check_draw():
         print("\nIt's a draw!\n")
         break
@@ -72,6 +73,7 @@ while True:
             print("\nYou can only enter a location on the board, not anything else!\n")                 #error handling
     if check_win("O"):
         print("Player O won!\n")
+        break
     elif check_draw():
         print("\nIt's a draw!\n")
         break
