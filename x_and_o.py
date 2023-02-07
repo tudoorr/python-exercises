@@ -7,6 +7,9 @@ def print_game_board():
         print("|" + "-" * 11 + "|")
     print("\n")                                     #prints game board nicely (like a normal X and O board but with ascii borders)
 
+def check_win(sign):
+    
+    
 def check_draw():
     for row in game:
         if "-" in row:
@@ -58,42 +61,40 @@ print_game_board()
 
 while True:
     while True:
-        player_turn = "X"
         try:
-            player(player_turn)
+            player("X")
             break
         except IndexError:
             print("\nYou did not respect the format or you entered an out of bounds spot!\n")
         except ValueError:
             print("\nYou can only enter a location on the board, not anything else!\n")                 #error handling
-    if check_row(player_turn):
+    if check_row("X"):
         print("\nPlayer X won!\n")
         break
-    elif check_col(player_turn):
+    elif check_col("X"):
         print("\nPlayer X won!\n")
         break
-    elif check_across(player_turn):
+    elif check_across("X"):
         print("\nPlayer X won!\n")
         break                                   #win check
     elif check_draw():
         print("\nIt's a draw!\n")
         break
     while True:
-        player_turn = "O"
         try:
-            player(player_turn)
+            player("O")
             break
         except IndexError:
             print("\nYou did not respect the format or you entered an out of bounds spot!\n")
         except ValueError:
             print("\nYou can only enter a location on the board, not anything else!\n")                 #error handling
-    if check_row(player_turn):
+    if check_row("O"):
         print("\nPlayer O won!r\n")
         break
-    elif check_col(player_turn):
+    elif check_col("O"):
         print("\nPlayer O won!c\n")
         break
-    elif check_across(player_turn):
+    elif check_across("O"):
         print("\nPlayer O won!a\n")
         break                                   #win check
     elif check_draw():
