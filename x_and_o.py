@@ -5,40 +5,29 @@ def print_game_board():
     for row in game:
         print("| " + " | ".join(row) + " |")
         print("|" + "-" * 11 + "|")
-    print("\n")                                     #prints game board nicely (like a normal X and O board but with ascii borders)
+    print("\n")                                     #prints game board nicely (like a normal X and O board but with some kinda "ascii art" borders)
 
 def check_win(sign):
-    
+    for row in game:                                            #check row
+        if row[0] == sign and row[1] == sign and row[2] == sign:
+            return True
+    for i in range(len(game) - 1):                              #check col
+        column = [row[i] for row in game]
+        if column[0] == sign and column[1] == sign and column[2] == sign:
+            return True
+        else:
+            column.clear()
+    if game[0][0] == sign and game[1][1] == sign and game[2][2] == sign:                #cross pattern check
+        return True
+    elif game[0][2] == sign and game[1][1] == sign and game [2][0] == sign:
+        return True
+    return False
     
 def check_draw():
     for row in game:
         if "-" in row:
             return False
     return True
-
-def check_across(sign):
-    if game[0][0] == sign and game[1][1] == sign and game[2][2] == sign:
-        return True
-    elif game[0][2] == sign and game[1][1] == sign and game [2][0] == sign:
-        return True
-    else:
-        return False
-
-def check_row(sign):
-    for row in game:
-        if len(set(row)) == 1:
-            return True
-        else:
-            return False
-
-def check_col(sign):
-    for i in range(len(game) - 1):
-        column = [row[i] for row in game]
-        if len(set(column)) == 1:
-            return True
-        else:
-            column.clear()
-    return False
  
 def check_space(row, column):
     if game[row][column] == "O" or game[row][column] == "X":
@@ -68,15 +57,8 @@ while True:
             print("\nYou did not respect the format or you entered an out of bounds spot!\n")
         except ValueError:
             print("\nYou can only enter a location on the board, not anything else!\n")                 #error handling
-    if check_row("X"):
-        print("\nPlayer X won!\n")
-        break
-    elif check_col("X"):
-        print("\nPlayer X won!\n")
-        break
-    elif check_across("X"):
-        print("\nPlayer X won!\n")
-        break                                   #win check
+    if check_win("X"):
+        print("Player X won!\n")
     elif check_draw():
         print("\nIt's a draw!\n")
         break
@@ -88,15 +70,8 @@ while True:
             print("\nYou did not respect the format or you entered an out of bounds spot!\n")
         except ValueError:
             print("\nYou can only enter a location on the board, not anything else!\n")                 #error handling
-    if check_row("O"):
-        print("\nPlayer O won!r\n")
-        break
-    elif check_col("O"):
-        print("\nPlayer O won!c\n")
-        break
-    elif check_across("O"):
-        print("\nPlayer O won!a\n")
-        break                                   #win check
+    if check_win("O"):
+        print("Player O won!\n")
     elif check_draw():
         print("\nIt's a draw!\n")
         break
