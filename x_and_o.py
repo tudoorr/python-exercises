@@ -51,7 +51,7 @@ print_game_board()
 while True:
     while True:
         try:
-            player("X")
+            player(sign_player)
             break
         except IndexError:
             print("\nYou did not respect the format or you entered an out of bounds spot!\n")
