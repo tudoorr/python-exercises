@@ -13,12 +13,12 @@ except TypeError:
 result = ""
 
 for char in word:
-    if char == " ":
-        result += " "
-    elif char.islower():
+    if char.islower():
         result += string.ascii_lowercase[(list(string.ascii_lowercase).index(char) + shift) % 26]
     elif char.isupper():
         result += string.ascii_uppercase[(list(string.ascii_uppercase).index(char) + shift) % 26]
+    elif char == " ":
+        result += " "
     else:
         print("You can't have special characters!")
         exit(0)
