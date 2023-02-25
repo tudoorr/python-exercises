@@ -12,8 +12,10 @@ if alphabet.lower() == string.ascii_lowercase:
     minutes_passed = int(end_minute) - int(start_minute)
     seconds_passed = int(end_second) + minutes_passed * 60 - int(start_second)
     if minutes_passed == 0:
-        print(f"{seconds_passed} seconds have passed, nice!)
+        print(f"You typed the alphabet in {seconds_passed} seconds!")
+        if seconds_passed < 15:
+            print("Wow, that's pretty fast!")
     else:
         print(f"\n{minutes_passed} minutes and {seconds_passed} seconds took you to enter the alphabet, you're slow!)
 else:
-    print("You did not enter the alphabet correctly!\n")
+    print("You did not enter the alphabet correctly, try again!\n")
