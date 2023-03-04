@@ -47,33 +47,22 @@ def player(sign):
     print_game_board()                              #this function lets the player enter where they want to place the X or the O, and assigns it to that spot on the game board
 
 print_game_board()
+counter = 1
 
 while True:
-    while True:
-        try:
-            player("X")
-            break
-        except IndexError:
-            print("\nYou did not respect the format or you entered an out of bounds spot!\n")
-        except ValueError:
-            print("\nYou can only enter a location on the board, not anything else!\n")                 #error handling
-    if check_win("X"):
-        print("Player X won!\n")
+    sign_player = "X"
+    if counter % 2 == 0:
+        sign_player = "O"
+    try:
+        player(sign_player)
+    except IndexError:
+        print("\nYou did not respect the format or you entered an out of bounds spot!\n")
+    except ValueError:
+        print("\nYou can only enter a location on the board, not anything else!\n")                 #error handling
+    if check_win(sign_player):
+        print(f"Player {sign_player} won!\n")
         break
     elif check_draw():
         print("\nIt's a draw!\n")
         break
-    while True:
-        try:
-            player("O")
-            break
-        except IndexError:
-            print("\nYou did not respect the format or you entered an out of bounds spot!\n")
-        except ValueError:
-            print("\nYou can only enter a location on the board, not anything else!\n")                 #error handling
-    if check_win("O"):
-        print("Player O won!\n")
-        break
-    elif check_draw():
-        print("\nIt's a draw!\n")
-        break
+    counter += 1
